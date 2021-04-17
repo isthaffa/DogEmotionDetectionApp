@@ -136,12 +136,13 @@ def load_model(model_path):
                                      custom_objects={"KerasLayer":hub.KerasLayer})
   return model
 
-breedModel=tf.keras.models.load_model('models/breeds.h5', compile=False)
-emotionModel=load_model('models/mobilenet_v2_emotion_new_sgd_fine_neww_1.h5')
+breedModel=tf.keras.models.load_model('assets/models/breeds.h5', compile=False)
+emotionModel=load_model('assets/models/mobilenet_v2_emotion_new_sgd_fine_neww_1.h5')
 
 app=Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1
 @app.route("/")
+
 def index():
     return render_template('index.html')
 
@@ -218,4 +219,4 @@ def predictImage(image_path):
     return data
 
 if __name__=="__main__":
-    app.run(debug=True,host='192.168.1.4',port=5000)
+    app.run(debug=True,host='192.168.1.3',port=5000)
