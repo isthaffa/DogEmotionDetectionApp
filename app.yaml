@@ -1,0 +1,15 @@
+entrypoint: gunicorn -b :$PORT main:app
+runtime: python
+env: flex
+runtime_config:
+  python_version: 3.6
+
+instance_class: B1
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+liveness_check:
+  path: "/liveness_check"
